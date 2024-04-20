@@ -1,0 +1,102 @@
+/*
+===================================================================================================
+--- BODY ------------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    background-color: var(--primary);
+}
+
+body * {
+    color: var(--white);
+}
+
+/*
+===================================================================================================
+--- DIVS -------------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+/*
+===================================================================================================
+--- TEXT ------------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+h1 {
+    font-size: 48px;
+    font-family: 'm-plus-rounded-bolder';
+}
+
+h2 {
+    font-size: 48px;
+    font-family: 'm-plus-rounded-bold';
+}
+
+h3 {
+    font-size: 32px;
+    font-family: 'm-plus-rounded';
+}
+
+h4 {
+    font-size: 24px;
+    font-family: 'm-plus-rounded';
+}
+
+h5 {
+    font-size: 16px;
+    font-family: 'm-plus-rounded';
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/*
+===================================================================================================
+--- FORM ------------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+input {
+    background-color: var(--secondary);
+    border-radius: 100vw;
+    box-sizing: border-box;
+    color: var(--white);
+    height: 36px;
+    padding: 5px 10px;
+    border: none;
+    font-family: 'm-plus-rounded-bold';
+}
+
+input:focus {
+    outline: var(--tertiary) solid 2px;
+}
+
+button {
+    border-radius: 100vw;
+    box-sizing: border-box;
+    color: var(--white);
+    cursor: pointer;
+    font-family: 'm-plus-rounded-bold';
+    height: 36px;
+    padding: 5px 10px;
+    background-color: var(--secondary);
+    border: none;
+    width: 85px;
+}
+
+button:active {
+    border: 2px solid var(--tertiary);
+    box-shadow:  inset 0px 0px 10px 10px rgba(0, 0, 0, 0.25);
+}

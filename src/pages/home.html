@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="../../dist/home.js"></script>
+    <link rel="stylesheet" href="../styles/css/home.css">
+</head>
+<body>
+    <nav>
+        <div id="logo-small"></div>
+
+        <div id="nav-search">
+            <input id="nav-search-input" type="text">
+            <button id="nav-search-button">Search</button>
+        </div>
+
+        <ul id="nav-tabs" class="options-bar">
+            <li class="options-bar-selector"></li>
+            <li class="nav-tab">Inspect Mode</li>
+            <li data-primary="true" class="nav-tab">Home</li>
+            <li class="nav-tab">Browse</li>
+            <li class="nav-tab">News</li>
+            <li class="nav-tab">Merchandise</li>
+            <li class="nav-tab">Log In</li>
+        </ul>
+    </nav>
+    
+    <section id="landing-page-display">
+        <div id="lpd-left">
+            <div id="hot-carousel">
+                <div class="album-compact-vertical">1</div>
+                <div class="album-compact-vertical">2</div>
+                <div class="album-compact-vertical">3</div>
+                <div class="album-compact-vertical">4</div>
+                <div class="album-compact-vertical">5</div>
+            </div>
+        </div>
+
+        <div id="lpd-right">
+            <div id="new-carousel">
+                <div class="album-compact-horizontal">1</div>
+                <div class="album-compact-horizontal">2</div>
+                <div class="album-compact-horizontal">3</div>
+                <div class="album-compact-horizontal">4</div>
+                <div class="album-compact-horizontal">5</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="discovery">
+        <header>
+            <h3 id="discovery-label">Discover</h3>
+            <ul id="discovery-options-bar" class="options-bar">
+                <li class="options-bar-selector"></li>
+                <li>Genre</li>
+                <li>Mood</li>
+                <li>Era</li>
+            </ul>
+        </header>
+
+        <div class="genre fade-in">
+            <h3 class="genre-title">Punk Rock</h3>
+            <img class="genre-image" src="../styles/images/genres/punk-rock.png" alt="Punk Rock">
+        </div>
+
+        <div class="genre fade-in">
+            <h3 class="genre-title">Electronic</h3>
+            <img class="genre-image" src="../styles/images/genres/electronic.png" alt="Electronic">
+        </div>
+
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+    </section>
+
+    <section class="mail-form">
+        <h3>Stay up to date on news in the music world</h3>
+        <h4>Sign up for our mail list</h4>
+
+        <div class="mail-form-submission">
+            <input id="mail-input" type="Email">
+            <button id="mail-button">Sign up!</button>
+        </div>
+    </section>
+
+    <section id="blog" class="playable-carousels">
+        <header>
+            <h3 id="news-label">News</h3>
+        </header>
+
+        <div id="blog-content-container">
+            <div id="reviews-carousel">
+                <div class="blog-carousel">
+                    <div class="news-container">1</div>
+                    <div class="news-container">2</div>
+                    <div class="news-container">3</div>
+                    <div class="news-container">4</div>
+                    <div class="news-container">5</div>
+                </div>
+            </div>
+
+            <div id="articles-carousel">
+                <div class="blog-carousel">
+                    <div class="news-container">1</div>
+                    <div class="news-container">2</div>
+                    <div class="news-container">3</div>
+                    <div class="news-container">4</div>
+                    <div class="news-container">5</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop">
+        <header>
+            <h3 id="shop-label">Shop</h3>
+            <ul id="shop-options-bar" class="options-bar">
+                <li class="options-bar-selector"></li>
+                <li>Tees</li>
+                <li>Hats</li>
+                <li>Bags</li>
+                <li>Others</li>
+            </ul>
+        </header>
+
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+        <div class="genre fade-in"></div>
+    </section>
+
+    <footer id="footer-general">
+        <h3 id="footer-general-label">About Me</h3>
+        <ul id="footer-general-list">
+            <div class="footer-general-item">
+                <img class="footer-general-item-img" src="../styles/images/icons/github.png" alt="Github">
+                <h4 class="footer-general-item-label">Github</h4>
+            </div>
+
+            <div class="footer-general-item">
+                <img class="footer-general-item-img" src="../styles/images/icons/linkedin.png" alt="LinkedIn">
+                <h4 class="footer-general-item-label">LinkedIn</h4>
+            </div>
+
+            <div class="footer-general-item">
+                <img class="footer-general-item-img" src="../styles/images/icons/nick.png" alt="Nicholas Prater">
+                <h4 class="footer-general-item-label">Portfolio</h4>
+            </div>
+
+            <div class="footer-general-item">
+                <img class="footer-general-item-img" src="../styles/images/icons/gmail.png" alt="Email">
+                <h4 class="footer-general-item-label">Contact Me</h4>
+            </div>
+        </ul>
+    </footer>
+</body>
+</html>

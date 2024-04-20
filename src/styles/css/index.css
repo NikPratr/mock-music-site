@@ -1,0 +1,55 @@
+:root {
+    --primary: #31363F;
+    --secondary: #222831;
+    --tertiary: #70b9bd;
+    --white: #e0e0e0;
+
+    --primary-50: #31363f80;
+    --primary-25: #31363f40;
+    
+    --secondary-50: #21273080;
+    --secondary-25: #22283140;
+
+    --tertiary-50: #70b9bd80;
+    --tertiary-25: #70b9bd40;
+    --tertiary-5: #70b9bd0d;
+
+    --clear: #ffffff00;
+
+    --border-radius-st: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.025);
+    border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(48, 79, 80, 0.5);
+    border-radius: 100vw;
+}
+
+@font-face {
+    font-family: 'm-plus-rounded-lighter';
+    src: url('../fonts/m-plus-rounded-thin.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'm-plus-rounded';
+    src: url('../fonts/m-plus-rounded-regular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'm-plus-rounded-bold';
+    src: url('../fonts/m-plus-rounded-bold.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'm-plus-rounded-bolder';
+    src: url('../fonts/m-plus-rounded-extra-bold.ttf') format("truetype");
+}

@@ -1,0 +1,381 @@
+@import url(./index.css);
+@import url(./nav.css);
+@import url(./elements.css);
+@import url(./generics.css);
+
+/*
+===================================================================================================
+--- HERO ------------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+#landing-page-display {
+    background-color: var(--primary);
+    border-radius: var(--border-radius-st);
+    border: 5px var(--tertiary) solid;
+    box-sizing: border-box;
+    display: flex;
+    height: 80vh;
+    width: 75vw;
+    margin: 5vh auto;
+}
+
+#lpd-left {
+    box-sizing: border-box;
+    height: 100%;
+    width: 250px;
+    padding-bottom: 10px;
+}
+
+#lpd-right {
+    box-sizing: border-box;
+    height: 100%;
+    width: calc(100% - 250px);
+}
+
+#home-featured-album {
+    border-left: 5px var(--tertiary-25) solid;
+    border-bottom: 5px var(--tertiary-25) solid;
+    display: flex;
+    box-sizing: border-box;
+    height: calc(100% - 250px);
+    padding: 20px;
+}
+
+.featured-album-art {
+    height: 100%;
+    border-radius: var(--border-radius-st);
+    margin-right: 10px;
+}
+
+.featured-album-descriptors {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.track-list {
+    list-style-type: none;
+    overflow-y: scroll;
+    padding: 0;
+    margin: 10px 0 0 0;
+    font-family: 'm-plus-rounded';
+}
+
+.track-details:nth-child(odd) {
+    background-color: var(--tertiary-5);
+}
+
+.track-details {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 100vw;
+    background-color: var(--secondary-25);
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+}
+
+.track-details-index {
+    width: 25px;
+}
+
+.track-details-name {
+    display: flex;
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+
+.track-details-length {
+    width: 10%;
+    text-align: right;
+}
+
+#hot-carousel {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    scroll-snap-type: y mandatory;
+    width: 100%;
+}
+
+#new-carousel {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    height: 250px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    padding: 10px 0;
+    width: 100%;
+}
+
+/*
+===================================================================================================
+--- DISCOVER --------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+#discovery {
+    background-color: var(--tertiary);
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5vh;
+    height: fit-content;
+    justify-content: space-between;
+    padding: 5vh 12.5vw 5vh 12.5vw;
+    width: 100vw;
+}
+
+#discovery > header {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'm-plus-rounded';
+    text-align: center;
+    width: 100%;
+}
+
+#discovery-label {
+    width: 33%;
+    margin: 0;
+    border-width: 5px 5px 0 5px;
+    border-style: solid;
+    border-color: var(--primary);
+    border-radius: var(--border-radius-st) 10px 0 0;
+}
+
+#discovery-options-bar {
+    width: 67%;
+}
+
+.genre {
+    background-color: var(--primary);
+    border-radius: var(--border-radius-st);
+    cursor: pointer;
+    height: 300px;
+    position: relative;
+    width: 300px;
+    box-shadow: 0 10px 15px 0px rgba(0,0,0,0.75);
+    transition: 1000ms;
+}
+
+.genre:hover .genre-title {
+    width: 100%;
+    background-color: var(--primary);
+}
+
+.fade-in {
+    transform: translateY(200px);
+    opacity: 0;
+}
+
+.genre-title {
+    background-image: linear-gradient(to right, var(--clear), var(--primary), var(--clear));
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    text-align: center;
+    transition: ease-in-out 250ms;
+}
+
+.genre-image {
+    width: 100%;
+    border-radius: var(--border-radius-st);
+}
+
+/*
+===================================================================================================
+--- MAIL FORM -------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+.mail-form {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5vh 0;
+    padding: 2vh 12.5vw 2vh 12.5vw;
+    text-align: center;
+    width: 100vw;
+}
+
+.mail-form-submission {
+    width: 100%;
+    margin-top: 2vh;
+}
+
+.mail-form > h3,
+.mail-form > h4 {
+    width: 100%;
+}
+
+#mail-input {
+    width: 35%;
+}
+
+/*
+===================================================================================================
+--- DISCUSSION ------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+#blog {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--tertiary);
+    box-sizing: border-box;
+    width: 100vw;
+    padding: 5vh 12.5vw;
+}
+
+#blog header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#news-label {
+    text-align: center;
+    width: 33%;
+    margin: 0;
+    border-width: 5px 5px 0 5px;
+    border-style: solid;
+    border-color: var(--primary);
+    border-radius: var(--border-radius-st) 10px 0 0;
+}
+
+#blog-content-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 5px var(--primary) solid;
+    border-radius: var(--border-radius-st);
+    width: 100%;
+}
+
+#reviews-carousel {
+    display: flex;
+    overflow-x: scroll;
+    padding: 2.5vw 0 1.25vw 0;
+}
+
+#articles-carousel {
+    display: flex;
+    overflow-x: scroll;
+    padding: 1.25vw 0 2.5vw 0;
+}
+
+.blog-carousel {
+    display: flex;
+    gap: 2.5vw;
+    box-sizing: border-box;
+}
+
+.news-container {
+    background-color: var(--secondary-25);
+    border-radius: var(--border-radius-st);
+    height: 300px;
+    width: 300px;
+}
+
+/*
+===================================================================================================
+--- SHOP ------------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+#shop {
+    background-color: var(--tertiary);
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5vh;
+    height: fit-content;
+    justify-content: space-between;
+    padding: 5vh 12.5vw 5vh 12.5vw;
+    width: 100vw;
+}
+
+#shop > header {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'm-plus-rounded';
+    text-align: center;
+    width: 100%;
+}
+
+#shop-label {
+    width: 33%;
+    margin: 0;
+    border-width: 5px 5px 0 5px;
+    border-style: solid;
+    border-color: var(--primary);
+    border-radius: var(--border-radius-st) 10px 0 0;
+}
+
+#shop-options-bar {
+    width: 67%;
+}
+
+/*
+===================================================================================================
+--- FOOTER ----------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+#footer-general {
+    padding: 5vh 12.5vw 5vh 12.5vw;
+    width: 100vw;
+}
+
+#footer-general > h3 {
+    text-align: center;
+}
+
+#footer-general-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 5%;
+    width: 100%;
+}
+
+.footer-general-item {
+    border-radius: 100vw;
+    cursor: pointer;
+    display: flex;
+    height: 50px;
+    width: 200px;
+    padding: 10px 50px 10px 10px;
+    transition: all 250ms linear;
+}
+
+.footer-general-item:hover {
+    box-shadow: 0 10px 15px 0px rgba(0,0,0,0.75);
+}
+
+.footer-general-item-img {
+    margin-right: 20px;
+    filter: grayscale(100%);
+    width: 50px;
+}
+
+.footer-general-item-label {
+    margin: auto 0;
+    text-wrap: nowrap;
+}
