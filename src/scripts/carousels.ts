@@ -12,21 +12,19 @@ const carousels: CarouselList = {
         timer: 0,
         recentlyHovered: false,
         genericScrolling: true
-    },
-    newAlbums: {
-        element: document.getElementById('new-carousel') as HTMLDivElement,
-        autoscrollIncrement: -1,
-        timer: 0,
-        recentlyHovered: false,
-        genericScrolling: false
     }
 };
-let newMusicCarouselScrolling = false;
+
+let heroTimer = 5000;
+let heroRecentlyHovered = false;
+let heroHorizontalIsScrolling = false;
+let heroVerticalIsScrolling = false;
+
 
 export const animateCarousels = () => {
     Object.values(carousels).forEach((carousel) => {
         if(!carousel.genericScrolling) return;
-
+        
         carousel.element.addEventListener('wheel', event => {
             event.preventDefault();
             scrollCarousel(carousel, event.deltaY);
@@ -36,14 +34,14 @@ export const animateCarousels = () => {
             carousel.timer = 2000;
             carousel.recentlyHovered = true;
         });
-
+        
         carousel.element.addEventListener('mouseleave', () => {
             carousel.recentlyHovered = false
         });
-
+        
         autoscroll(carousel);
     });
-
+    
     cloneCarouselItems();
     animateHeroCarousels();
 };
@@ -78,8 +76,8 @@ const autoscroll = (carousel: Carousel) => {
 const cloneCarouselItems = () => {
     // Fun alternative to Array.from(...)
     const carouselsToClone = [...document.querySelectorAll('.blog-carousel')] as HTMLDivElement[];
-    const heroVertical = document.getElementById('hot-carousel') as HTMLDivElement;
-    const heroHorizontal = document.getElementById('new-carousel') as HTMLDivElement;
+    const heroVertical = document.getElementById('hero-vertical') as HTMLDivElement;
+    const heroHorizontal = document.getElementById('hero-horizontal') as HTMLDivElement;
     carouselsToClone.push(heroHorizontal, heroVertical);
 
     carouselsToClone.forEach(carousel => {
@@ -90,39 +88,77 @@ const cloneCarouselItems = () => {
 };
 
 const animateHeroCarousels = () => {
-    const heroVertical = document.getElementById('hot-carousel') as HTMLDivElement;
-    const heroHorizontal = document.getElementById('new-carousel') as HTMLDivElement;
+    const heroVertical = document.getElementById('hero-vertical') as HTMLDivElement;
+    const heroHorizontal = document.getElementById('hero-horizontal') as HTMLDivElement;
+    const heroCarousels = [heroVertical, heroHorizontal];
+    heroVertical.scrollTop = heroVertical.scrollHeight;
 
     const scrollHeroHorizontal = (amount: number) => {
-        if(newMusicCarouselScrolling) return;
-        newMusicCarouselScrolling = true;
+        if(heroHorizontalIsScrolling) return;
+        heroHorizontalIsScrolling = true;
         
-        const HCScrollLeft = heroHorizontal.scrollLeft;
         const childWidth = heroHorizontal.firstElementChild?.getBoundingClientRect().width! + 10;
         const scrollDirectionModifier = (amount > 0 || amount > 0) ? 1 : -1;
-        const childIndex = Math.ceil(HCScrollLeft / childWidth);
-        const nextChildIndex = childIndex + scrollDirectionModifier;
-        const nextChild = heroHorizontal.children[nextChildIndex];
+        let scrollByAmount = childWidth * scrollDirectionModifier;
+
+        if(heroHorizontal.scrollLeft + scrollByAmount < 0) {
+            heroHorizontal.scrollLeft = heroHorizontal.children.length / 2 * childWidth;
+        }
+        if(heroHorizontal.scrollLeft + scrollByAmount > childWidth * heroHorizontal.children.length / 2) {
+            heroHorizontal.scrollLeft = 0;
+        }
         
-        if(nextChild) {
-            heroHorizontal.scrollTo({
-                left: childWidth * nextChildIndex,
-                behavior: "smooth"
-            });
-        };
+        heroHorizontal.scrollTo({
+            left: heroHorizontal.scrollLeft + scrollByAmount,
+            behavior: "smooth"
+        });
         
         setTimeout(() => {
-            if(heroHorizontal.children.length / nextChildIndex === 2 && scrollDirectionModifier > 0) {
-                heroHorizontal.scrollLeft = 0;
-            }
-
-            if((heroHorizontal.children.length / nextChildIndex) === Infinity && scrollDirectionModifier < 0) {
-                heroHorizontal.scrollLeft = childWidth * heroHorizontal.children.length / 2;
-            }
-            newMusicCarouselScrolling = false;
+            heroHorizontalIsScrolling = false;
         }, 250);
     };
 
+    const scrollHeroVertical = (amount: number) => {
+            if(heroVerticalIsScrolling) return;
+            heroVerticalIsScrolling = true;
+            
+            const childHeight = heroVertical.firstElementChild?.getBoundingClientRect().height! + 10;
+            const scrollDirectionModifier = (amount > 0 || amount > 0) ? 1 : -1;
+            const maxScroll = Math.floor(heroVertical.scrollHeight - heroVertical.getBoundingClientRect().height);
+            let scrollByAmount = childHeight * scrollDirectionModifier;
+
+            if(heroVertical.scrollTop + scrollByAmount < 0) {
+                heroVertical.scrollTop += heroVertical.children.length / 2 * childHeight;
+            };
+            if(heroVertical.scrollTop + scrollByAmount > maxScroll) {
+                heroVertical.scrollTop = maxScroll - heroVertical.children.length / 2 * childHeight;
+            };
+            
+            heroVertical.scrollTo({
+                top: heroVertical.scrollTop + scrollByAmount,
+                behavior: "smooth"
+            });
+            
+            
+            setTimeout(() => {
+            heroVerticalIsScrolling = false;
+            }, 250);
+    }
+
+    const autoScrollHeroCarousels = () => {
+        if(heroTimer > 0 && !heroRecentlyHovered) {
+            heroTimer -= 20;
+        } else if(heroTimer <= 0 && !heroRecentlyHovered) {
+            scrollHeroHorizontal(-1);
+            scrollHeroVertical(-1);
+            heroTimer = 5000;
+        }
+
+        setTimeout(() => {
+            autoScrollHeroCarousels();
+        }, 20);
+    };
+    
     heroHorizontal.addEventListener('wheel', event => {
         event.preventDefault();
 
@@ -134,6 +170,29 @@ const animateHeroCarousels = () => {
         };
     });
     
+    heroVertical.addEventListener('wheel', event => {
+        event.preventDefault();
+
+        if(event.deltaY) {
+            scrollHeroVertical(event.deltaY);
+        };
+        if(event.deltaX) {
+            scrollHeroVertical(event.deltaX);
+        };
+    });
+
+    heroCarousels.forEach(carousel => {
+        carousel.addEventListener('mouseenter', () => {
+            heroTimer = 5000;
+            heroRecentlyHovered = true;
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+            heroRecentlyHovered = false
+        });
+    });
+
+    autoScrollHeroCarousels();
 }
 
 type CarouselList = { [key: string]: Carousel };
@@ -144,9 +203,4 @@ type Carousel = {
     timer: number
     recentlyHovered: boolean
     genericScrolling: boolean
-};
-
-type CarouselTimers = {
-    hoverDelay: number,
-    autoScrollDelay?: number
 };
