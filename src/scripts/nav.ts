@@ -1,8 +1,6 @@
 import { optionsOnClick } from "./home";
 
 let open = true;
-let throttleTimer = 0;
-let windowScroll = 0;
 
 export const addNavBar = (body: HTMLBodyElement, tab?: string) => {
     const navBar = document.createElement('nav');
@@ -52,11 +50,13 @@ export const addNavBar = (body: HTMLBodyElement, tab?: string) => {
     });
 
     const handleTabSwap = (event: MouseEvent, tab: string) => {
-        console.log(event.target);
         optionsOnClick(event);
         
         setTimeout(() => {
+            const contentHider = document.querySelector('.content-hider') as HTMLDivElement;
+            contentHider.style.opacity = '1';
             optionsSelector.style.opacity = '0';
+
             setTimeout(() => {
                 window.location.href = `${tab}.html`;
             }, 250);

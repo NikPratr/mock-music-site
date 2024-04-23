@@ -1,6 +1,7 @@
 import { Album, Song } from './Music';
 import { MusicList } from './MusicList';
 import { animateCarousels } from './carousels';
+import { fadeContent } from './generics';
 import { addNavBar } from './nav';
 
 let oddTabRow = false;
@@ -98,9 +99,7 @@ const addGenreLogic = () => {
 }
 
 const onPageLoad = () => {
-    setTimeout(() => {
-            (document.body.children[1] as HTMLElement).style.opacity = '1';
-    }, 500);
+    fadeContent();
     MusicList.get();
     displayAlbum(MusicList.albums[0]);
     addNavBar(document.body as HTMLBodyElement, 'home');
