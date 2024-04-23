@@ -14,7 +14,6 @@ const carousels: CarouselList = {
         genericScrolling: true
     }
 };
-
 let heroTimer = 5000;
 let heroRecentlyHovered = false;
 let heroHorizontalIsScrolling = false;

@@ -2,10 +2,11 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        home: './src/scripts/dist/home.js'
+        home: './src/scripts/dist/home.js',
+        browse: './src/scripts/dist/browse.js'
     },
     output: {
-        filename: 'home.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     }
 }

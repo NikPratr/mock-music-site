@@ -5,10 +5,10 @@
 */
 
 body {
+    background-color: var(--primary);
     display: flex;
     flex-wrap: wrap;
     margin: 0;
-    background-color: var(--primary);
 }
 
 body * {

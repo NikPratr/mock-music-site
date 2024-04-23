@@ -35,16 +35,17 @@
 }
 
 .options-bar-selector {
-    transition: all 250ms ease;
     background-color: transparent;
     border-radius: 100vw;
     border: 5px var(--tertiary-50) solid;
     box-sizing: border-box;
+    display: none;
     height: 100%;
     left: -2px;
     opacity: 0;
     position: absolute;
     top: 0;
+    transition: all 250ms ease;
     translate: (-50%, -50%);
 }
 

@@ -1,4 +1,7 @@
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
     align-items: center;
     background-color: var(--secondary);
     box-sizing: border-box;
@@ -7,6 +10,8 @@ nav {
     justify-content: space-between;
     padding: 1vw;
     width: 100vw;
+    transition: top 200ms ease-in-out;
+    z-index: 999;
 }
 
 #logo-small {
@@ -15,7 +20,11 @@ nav {
     border-radius: 5px;
     height: 100%;
     justify-self: flex-start;
+    justify-content: center;
+    align-items: center;
     width: 250px;
+    font-weight: bolder;
+    font-size: 24px;
 }
 
 #nav-search {
@@ -60,8 +69,4 @@ nav {
     text-wrap: nowrap;
     text-align: center;
     transition: background-color 0.3s ease;
-}
-
-.selected-tab {
-    box-shadow:  inset 0px 0px 5px 0px rgba(0,0,0,0.75);
 }

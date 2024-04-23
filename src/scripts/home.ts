@@ -1,30 +1,17 @@
 import { Album, Song } from './Music';
 import { MusicList } from './MusicList';
 import { animateCarousels } from './carousels';
+import { addNavBar } from './nav';
 
 let oddTabRow = false;
 
-const tabOnClick = (event: MouseEvent) => {
-    console.log(event.target);
-    const tab = event.target as HTMLLIElement;
-    const tabHolder = tab.parentElement as HTMLUListElement;
-
-    for (const child of tabHolder.children) {
-        if (child.classList.contains('selected-tab')) {
-            child.classList.remove('selected-tab');
-        }
-    }
-    tab.classList.add('selected-tab');
-}
-
-const tabOnClickTwo = (event: MouseEvent) => {
+export const optionsOnClick = (event: MouseEvent) => {
     const parentElement = event.currentTarget as HTMLLIElement;
     const clickedTab = event.target as HTMLLIElement;
     const optionsBar = clickedTab.parentElement as HTMLUListElement;
     const selector = Array.from(parentElement.children).find(element => element.classList.contains('options-bar-selector')) as HTMLLIElement;
     const clickedTabPosition = clickedTab.getBoundingClientRect().left - optionsBar.getBoundingClientRect().left;
-
-    if (!clickedTab.classList.contains('options-bar') && clickedTab != selector) {
+    if (!clickedTab.classList.contains('options-bar') && selector && clickedTab != selector) {
         selector.style.left = `${clickedTabPosition}px`;
         selector.style.width = `${clickedTab.getBoundingClientRect().width}px`;
     }
@@ -61,10 +48,10 @@ const displayAlbum = (album: Album) => {
     featuredAlbum.prepend(albumDivHTML);
 }
 
-const resizeSelectorTabs = () => {
+export const resizeSelectorTabs = () => {
     const discoverOptions = Array.from(document.getElementsByClassName('options-bar')) as HTMLUListElement[];
     discoverOptions.forEach(optionsBar => {
-        const primaryTab = Array.from(optionsBar.children).findIndex(child => (child as HTMLLIElement).dataset.primary) - 1;
+        const primaryTab = Array.from(optionsBar.children).findIndex(child => (child as HTMLLIElement).dataset.primary === 'true') - 1;
         const childCount: number = optionsBar.childElementCount - 1;
         const optionsBarWidth = optionsBar.getBoundingClientRect().width;
         const selectorWidth = Math.round(optionsBarWidth / childCount);
@@ -79,11 +66,11 @@ const resizeSelectorTabs = () => {
     });
 }
 
-const addOptionsLogic = () => {
+export const addOptionsLogic = () => {
     const discoverOptions = Array.from(document.getElementsByClassName('options-bar')) as HTMLUListElement[];
     resizeSelectorTabs();
     discoverOptions.forEach(optionsBar => {
-        optionsBar.addEventListener('click', tabOnClickTwo)
+        optionsBar.addEventListener('click', optionsOnClick)
     });
 }
 
@@ -111,8 +98,12 @@ const addGenreLogic = () => {
 }
 
 const onPageLoad = () => {
+    setTimeout(() => {
+            (document.body.children[1] as HTMLElement).style.opacity = '1';
+    }, 500);
     MusicList.get();
     displayAlbum(MusicList.albums[0]);
+    addNavBar(document.body as HTMLBodyElement, 'home');
     addOptionsLogic();
     addGenreLogic();
     submitEmail();
@@ -120,5 +111,9 @@ const onPageLoad = () => {
     animateCarousels();
 }
 
-document.addEventListener('DOMContentLoaded', onPageLoad);
+document.addEventListener('DOMContentLoaded', () => {
+    if(window.location.href.indexOf('home.html') > -1) {
+        onPageLoad();
+    }
+});
 window.addEventListener('resize', resizeSelectorTabs);
