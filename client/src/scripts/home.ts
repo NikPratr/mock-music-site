@@ -32,7 +32,7 @@ const displayAlbum = (album: Album) => {
     albumDivHTML.innerHTML = `
         <img class="featured-album-art" src="${album.artwork}" alt="Album art for The Damaged and Broken's Riot Generation">
         <div class="featured-album-descriptors">
-            <h2>${album.name}</h2>
+            <h2>${album.title}</h2>
             <h3>by: ${album.artist}</h3>
             <ul class="track-list">
                 ${album.trackList.map((track, index) => {

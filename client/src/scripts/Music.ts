@@ -1,6 +1,6 @@
 export class Album {
     constructor(
-        readonly name: string,
+        readonly title: string,
         readonly artist: string,
         readonly published: Date,
         readonly artwork: string,
