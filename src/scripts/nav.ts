@@ -50,10 +50,11 @@ export const addNavBar = (body: HTMLBodyElement, tab?: string) => {
     });
 
     const handleTabSwap = (event: MouseEvent, tab: string) => {
+        const contentHider = document.querySelector('.content-hider') as HTMLDivElement;
+        contentHider.style.display = 'block';
         optionsOnClick(event);
         
         setTimeout(() => {
-            const contentHider = document.querySelector('.content-hider') as HTMLDivElement;
             contentHider.style.opacity = '1';
             optionsSelector.style.opacity = '0';
 

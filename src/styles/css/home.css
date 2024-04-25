@@ -324,7 +324,7 @@
     margin: 0;
     border-width: 5px 5px 0 5px;
     border-style: solid;
-    border-color: var(--primary);
+    border-color: var(--secondary);
     border-radius: var(--border-radius-st) 10px 0 0;
 }
 

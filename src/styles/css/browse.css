@@ -2,3 +2,117 @@
 @import url(./nav.css);
 @import url(./elements.css);
 @import url(./generics.css);
+
+/*
+===================================================================================================
+--- BODY ------------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+body {
+    padding: 0 5vh;
+}
+
+/*
+===================================================================================================
+--- FILTERS ---------------------------------------------------------------------------------------
+===================================================================================================
+*/
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 80vh;
+    width: 400px;
+    border-radius: var(--border-radius-st);
+    border: 5px var(--tertiary) solid;
+}
+
+.filter-container li {
+    padding: 10px;
+}
+
+#filter-input {
+    width: 100%;
+    margin: 10px;
+}
+
+.filter-options-panel {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    height: calc(100% - 56px);
+    align-content: flex-start;
+    width: 50%;
+}
+
+.filter-options > li,
+.filter-suboptions > li {
+    cursor: pointer;
+    padding-left: 20px;
+    position: relative;
+    user-select: none;
+}
+
+/*
+--- Obnoxiously Complicated Border Effect ---------------------------------------------------------
+*/
+
+.filter-options > li {
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(to right, var(--secondary-50), var(--secondary-50), var(--clear)) 1 0 0 stretch;
+    transition: box-shadow 100ms linear;
+}
+
+.filter-suboptions > li {
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(to left, var(--secondary-50), var(--secondary-50), var(--clear)) 1 0 0 stretch;
+    transition: box-shadow 100ms linear;
+}
+
+.filter-options > li:last-of-type {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, var(--secondary-50), var(--secondary-50), var(--clear)) 1 0 1 0 stretch;
+}
+
+.filter-suboptions > li:last-of-type {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to left, var(--secondary-50), var(--secondary-50), var(--clear)) 1 0 1 0 stretch;
+}
+
+.filter-active {
+    box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.25);
+}
+
+.filter-option-divider {
+    border-image: linear-gradient(to right, var(--tertiary), var(--tertiary), var(--clear)) 1 0 0 stretch !important;
+}
+
+/*
+--- End Obnoxiously Complicated Border Effect -----------------------------------------------------
+*/
+
+.filter-suboptions-panel {
+    height: calc(100% - 56px);
+    width: 50%;
+}
+
+.filter-options {
+    height: fit-content;
+}
+
+.filter-options,
+.filter-suboptions {
+    margin: 0;
+    width: 100%;
+    height: fit-content;
+}
+
+.filter-suboptions {
+    opacity: 0;
+    transition: opacity 250ms linear;
+}

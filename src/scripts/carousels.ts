@@ -195,7 +195,6 @@ const animateHeroCarousels = () => {
 }
 
 type CarouselList = { [key: string]: Carousel };
-
 type Carousel = {
     element: HTMLDivElement
     autoscrollIncrement: number

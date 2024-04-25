@@ -78,6 +78,7 @@
 .content-hider {
     background-color: var(--primary);
     bottom: 0;
+    display: block;
     height: 90vh;
     left: 0;
     opacity: 1;
