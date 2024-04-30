@@ -4,7 +4,7 @@ export class Album {
         readonly artist: string,
         readonly published: Date,
         readonly artwork: string,
-        price: number,
+        public price: number,
         
         public trackList: Song[] = [],
         readonly contributors?: string
@@ -18,7 +18,7 @@ export class Album {
 export class Song {
     constructor(
         readonly name: string,
-        price: number,
+        public price: number,
         readonly length: string,
         readonly album?: Album,
         readonly artist?: string,
