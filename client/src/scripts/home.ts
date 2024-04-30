@@ -25,6 +25,7 @@ const submitEmail = () => {
 
 const displayAlbum = (album: Album) => {
     const featuredAlbum = document.getElementById('lpd-right')! as HTMLDivElement;
+    console.log('something');
 
     const albumDivHTML = document.createElement('div');
     albumDivHTML.classList.add('featured-album');
@@ -99,6 +100,7 @@ const addGenreLogic = () => {
 }
 
 const onPageLoad = () => {
+    console.log('something');
     fadeContent();
     MusicList.get();
     displayAlbum(MusicList.albums[0]);
@@ -111,6 +113,7 @@ const onPageLoad = () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('something');
     if(window.location.href.indexOf('home.html') > -1) {
         onPageLoad();
     }

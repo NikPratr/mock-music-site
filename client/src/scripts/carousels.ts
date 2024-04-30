@@ -1,3 +1,5 @@
+import { MusicList } from './MusicList';
+
 const carousels: CarouselList = {
     reviews: {
         element: document.getElementById('reviews-carousel') as HTMLDivElement,
@@ -19,6 +21,8 @@ let heroRecentlyHovered = false;
 let heroHorizontalIsScrolling = false;
 let heroVerticalIsScrolling = false;
 
+const heroVertical = document.getElementById('hero-vertical') as HTMLDivElement;
+const heroHorizontal = document.getElementById('hero-horizontal') as HTMLDivElement;
 
 export const animateCarousels = () => {
     Object.values(carousels).forEach((carousel) => {
@@ -40,7 +44,9 @@ export const animateCarousels = () => {
         
         autoscroll(carousel);
     });
-    
+    console.log('something');
+
+    populateHeroHorizontal();
     cloneCarouselItems();
     animateHeroCarousels();
 };
@@ -86,12 +92,34 @@ const cloneCarouselItems = () => {
     })
 };
 
-const animateHeroCarousels = () => {
-    const heroVertical = document.getElementById('hero-vertical') as HTMLDivElement;
-    const heroHorizontal = document.getElementById('hero-horizontal') as HTMLDivElement;
-    const heroCarousels = [heroVertical, heroHorizontal];
-    heroVertical.scrollTop = heroVertical.scrollHeight;
+const populateHeroHorizontal = () => {
+    const createFillerDivs = () => {
+        while(heroHorizontal.children.length < 5) {
+            const fillerDiv = document.createElement('div');
+            fillerDiv.classList.add('album-compact-horizontal');
+            fillerDiv.innerHTML = (heroHorizontal.children.length + 2).toString();
 
+            heroHorizontal.appendChild(fillerDiv);
+        }
+    };
+
+    console.log('something');
+    MusicList.albums.forEach((album, index) => {
+        const albumImg = document.createElement('img');
+        albumImg.setAttribute('src', album.artwork);
+        albumImg.setAttribute('alt', `Album art for ${album.artist}'s ${album.title}`);
+        albumImg.classList.add('album-compact-horizontal');
+        heroHorizontal.appendChild(albumImg);
+
+        if(index === MusicList.albums.length) createFillerDivs();
+    });
+}
+
+const animateHeroCarousels = () => {
+    const heroCarousels = [heroVertical, heroHorizontal];
+
+    heroVertical.scrollTop = heroVertical.scrollHeight;
+    
     const scrollHeroHorizontal = (amount: number) => {
         if(heroHorizontalIsScrolling) return;
         heroHorizontalIsScrolling = true;

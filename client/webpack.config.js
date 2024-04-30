@@ -2,8 +2,8 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        home: './src/scripts/dist/home.js',
-        browse: './src/scripts/dist/browse.js'
+        home: './dist/client/src/scripts/home.js',
+        browse: './dist/client/src/scripts/browse.js'
     },
     output: {
         filename: '[name].js',
