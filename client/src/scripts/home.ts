@@ -30,7 +30,7 @@ const displayAlbum = (album: Album) => {
     albumDivHTML.classList.add('featured-album');
     albumDivHTML.setAttribute('id', 'home-featured-album');
     albumDivHTML.innerHTML = `
-        <img class="featured-album-art" src="${album.artwork}" alt="Album art for The Damaged and Broken's Riot Generation">
+        <img class="featured-album-art" src="${album.artwork}" alt="Album art for The ${album.artist}'s ${album.title}">
         <div class="featured-album-descriptors">
             <h2>${album.title}</h2>
             <h3>by: ${album.artist}</h3>
