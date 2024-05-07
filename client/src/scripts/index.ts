@@ -1,3 +1,5 @@
+import '../styles/index.css';
+
 const browse = require('./browse');
 const carousels = require('./carousels');
 const generics = require('./generics');

@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
     mode: 'development',
@@ -11,10 +11,17 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js']
     },
     module: {
-        rules: [{
+        rules: [
+            {
             test: /\.tsx?$/,
             exclude: /node_modules/,
             use: 'ts-loader'
-        }]
+            },
+            {
+                test:/\.css$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
     }
 }
