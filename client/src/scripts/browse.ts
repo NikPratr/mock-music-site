@@ -78,7 +78,9 @@ const addFilterLogic = () => {
     });
 }
 
-document.addEventListener('DOMContentLoaded', onPageLoad);
+if(window.location.href.indexOf('browse.html') > -1) {
+    onPageLoad();
+}
 window.addEventListener('resize', resizeSelectorTabs);
 
 type SuboptionList = { [key: string]: Suboptions };

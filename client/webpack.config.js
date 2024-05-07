@@ -1,12 +1,20 @@
 const path = require('path')
 
 module.exports = {
-    entry: {
-        home: './src/scripts/dist/home.js',
-        browse: './src/scripts/dist/browse.js'
-    },
+    mode: 'development',
+    entry: '/src/scripts/index.ts',
     output: {
-        filename: '[name].js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js']
+    },
+    module: {
+        rules: [{
+            test: /\.tsx?$/,
+            exclude: /node_modules/,
+            use: 'ts-loader'
+        }]
     }
 }

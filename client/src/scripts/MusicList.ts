@@ -5,7 +5,7 @@ export class MusicList {
     static albums: Album[] = [];
 
     private constructor() {
-            const RiotGeneration = new Album('Riot Generation', 'The Damaged and Broken', new Date('2008-05-02'), '../styles/images/generated-album-art/punk-1.png', 14.99);
+            const RiotGeneration = new Album('Riot Generation', 'The Damaged and Broken', new Date('2008-05-02'), '../images/generated-album-art/punk-1.png', 14.99);
             RiotGeneration.addTracks([
                 new Song('Blue Glass', 2.99, '3:45', RiotGeneration),
                 new Song('Runaway', 2.99, '2:59', RiotGeneration),
