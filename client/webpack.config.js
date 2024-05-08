@@ -27,6 +27,18 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: ['html-loader']
+            },
+            {
+                test: /\.(png|ttf)/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'assets',
+                        publicPath: 'assets'
+                    }
+                }],
+                type: 'javascript/auto'
             }
         ]
     },
