@@ -7,6 +7,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        // assetModuleFilename: 'images/[hash][ext][query]',
         clean: true
     },
     resolve: {
@@ -29,17 +30,9 @@ module.exports = {
                 use: ['html-loader']
             },
             {
-                test: /\.(png|ttf)/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'assets',
-                        publicPath: 'assets'
-                    }
-                }],
-                type: 'javascript/auto'
-            }
+                test: /\.(png|ttf)$/i,
+                type: 'asset/resource',
+            },
         ]
     },
     plugins: [
